@@ -1,0 +1,43 @@
+{% extends "template.html" %}
+  {% block title %}Edit Event — BristolPulse{% endblock %}
+  {% block content %}
+
+    <!--   MAIN CONTENT-->
+       <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+           <div class="col-md-8">
+
+            <h2 class="mb-4">Edit Event</h2>
+
+            <form method="POST">
+        
+                <div class="mb-3">
+                    <label class="form-label">Event Name</label>
+                    <input class="form-control" name="event_name" value="{{ event.event_name }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" name="event_description">{{ event.event_description }}</textarea>
+                </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Venue ID</label>
+                    <input class="form-control" name="venue_id" value="{{ event.venue_id }}" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Category ID</label>
+            <input class="form-control" name="category_id" value="{{ event.category_id }}" required>
+                </div>
+            </div>
+
+            <button class="btn btn-primary w-100">Update Event</button>
+
+            </form>
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

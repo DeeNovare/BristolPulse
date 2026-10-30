@@ -1,0 +1,252 @@
+/*  Theme tokens and style classes*/
+    :root{
+      --nav-h: 103px;                 
+      --bp-bg: #f3f5f8;
+      --bp-primary: #4C7CF0;         
+      --bp-primary-soft: rgba(76,124,240,.12);
+      --bp-warning: #EFA94A;          
+      --bp-warning-soft: rgba(239,169,74,.15);
+      --bp-text: #1B1F23;
+      --bp-text-2: #555B63;
+      --bp-card: #ffffff;
+      --bp-border: #E4E7EB;
+    }
+    body{ background-color: var(--bp-bg); color: var(--bp-text); }
+
+    
+    .navbar{
+      top: 0; z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,.12);
+      border-radius: 0 0 20px 20px;
+      padding-block: 18px;
+      background: rgba(0,0,0,.35);         /* translucent over hero */
+      backdrop-filter: saturate(160%) blur(6px);
+    }
+    .navbar .navbar-brand i{ color: var(--bp-primary); }
+    .nav-link.active{ color: #fff !important; }
+    .nav-search .form-control:focus{
+      border-color: var(--bp-warning);
+      box-shadow: 0 0 6px var(--bp-warning);
+    }
+    /* Align main content width with navbar */
+    .container{ max-width: 1200px; }
+
+    
+    header.hero{
+      position: relative;
+      min-height: 80vh;
+      background: url('/static/Bristol_silhouette_2.jpg') center/cover no-repeat;
+      color: #fff; 
+      padding-top: var(--nav-h);            /* text stays below navbar */
+    }
+    @media (max-width: 768px){
+    header.hero{
+    min-height: 75vh; 
+    background-position: center ; /* Adjust for mobile */
+      }
+    }
+    header.hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background: rgba(0,0,0,.45);          
+      z-index: 0;
+    }
+    header.hero .container{ position: relative; z-index: 1; }
+
+    /* Explore feature cards */
+    .feature-card{
+      background: var(--bp-card);
+      border: 1px solid var(--bp-border);
+      border-radius: 14px;
+      transition: transform .2s ease, box-shadow .2s ease;
+      height: 100%;
+    }
+    .feature-card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    }
+    .feature-icon{
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--bp-primary-soft);
+      color: var(--bp-primary);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .text-muted{ color: var(--bp-text-2)!important; }
+
+    /* Featured events */
+    .card img{ object-fit: cover; height: 200px; }
+
+    /* Footer */
+    footer{ background: #f7f8fb; border-top: 1px solid var(--bp-border); }
+    .brand-mark{
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bp-primary-soft); color: var(--bp-primary);
+      display: inline-flex; align-items:center; justify-content:center;
+    }
+    .bce-badge{
+      background: var(--bp-warning-soft);
+      border: 1px solid rgba(239,169,74,.35);
+      padding: .5rem .9rem; border-radius: .75rem;
+      color: #754a0a;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+
+    /* Dark-mode */
+    .dark-mode{
+      --bp-bg: #111418;
+      --bp-card: #1B1F23;
+      --bp-text: #EDEDED;
+      --bp-text-2: #B8BCC2;
+      --bp-border: #2A2E34;
+    }
+    .dark-mode footer{ background: #12161b; }
+    .dark-mode .navbar{ background: rgba(0,0,0,.45); }
+
+    .contact-card{
+      background: var(--bp-card);
+      border: 1px solid var(--bp-border);
+      border-radius: 14px;
+      transition: transform .2s ease, box-shadow .2s ease;
+      height: 100%;
+    }
+    .contact-card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    }
+    form .form-control:focus {
+  border-color: var(--bp-warning);
+  box-shadow: 0 0 6px var(--bp-warning);
+  outline: none;
+}
+
+
+/* Navbar: solid version for pages without hero */
+.navbar-solid {
+  background-color: #111418;       
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  backdrop-filter: none;
+  border-radius: 0 0 20px 20px;
+}
+
+/* active nav link underline */
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  color: #ffffff !important;
+  font-weight: 600;
+  border-bottom: 2px solid var(--bp-warning);
+}
+
+/* Auth pages layout */
+.auth-wrapper {
+  min-height: calc(100vh - 140px);  /* viewport minus navbar/footer spacing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.auth-card {
+  background: var(--bp-card);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.14);
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 100%;
+}
+
+.auth-card h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+
+.auth-card p.subtitle {
+  margin-bottom: 1.5rem;
+  color: var(--bp-text-2);
+  font-size: .95rem;
+}
+
+.auth-card .form-label {
+  font-weight: 500;
+  font-size: .9rem;
+}
+
+.auth-card .form-control {
+  padding: .6rem .75rem;
+}
+
+/* Reuse your amber focus globally for forms */
+form .form-control:focus {
+  border-color: var(--bp-warning);
+  box-shadow: 0 0 6px var(--bp-warning);
+  outline: none;
+}
+
+/* Link style inside auth */
+.auth-card a {
+  color: var(--bp-primary);
+  text-decoration: none;
+}
+
+.auth-card a:hover {
+  text-decoration: underline;
+}
+
+
+.auth-helper {
+  font-size: .85rem;
+  color: var(--bp-text-2);
+}
+
+
+.form-check-label {
+  font-size: .85rem;
+}
+
+.hero-img {
+  height: 70vh;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.carousel-caption {
+  bottom: 30%;
+}
+
+/* Responsive tweak */
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .receipt-area, .receipt-area * {
+    visibility: visible;
+  }
+
+  .receipt-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+

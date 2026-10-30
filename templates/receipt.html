@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+{% block title %}Booking Receipt — BristolPulse{% endblock %}
+{% block content %}
+<div class="container mt-5 pt-5">
+    <a href="{{ url_for('my_bookings') }}" class="btn btn-outline-secondary  mt-3 ms-2 mb-5">My Bookings</a>
+
+  <div class="card shadow-sm p-4 receipt-area">
+    <h2 class="mb-3">Booking Receipt</h2>
+
+    <p><strong>Booking ID:</strong> {{ booking.booking_id }}</p>
+    <p><strong>Event:</strong> {{ booking.event_name }}</p>
+    <p><strong>Venue:</strong> {{ booking.venue_name }}</p>
+
+    <p><strong>Date:</strong> {{ booking.day_date.strftime("%d %B %Y") }}</p>
+    <p><strong>Time:</strong> {{ booking.start_datetime.strftime("%H:%M") }} - {{ booking.end_datetime.strftime("%H:%M") }}</p>
+
+    <hr>
+
+    <p><strong>Tickets:</strong> {{ booking.num_tickets }}</p>
+    <p><strong>Total Paid:</strong> £{{ booking.total_price }}</p>
+    {% if discount > 0 %}
+    <p>Student Discount (10%): -£{{ "%.2f"|format(discount) }}</p>
+    {% endif %}
+
+    <p><strong>Total Paid: £{{ "%.2f"|format(final_price) }}</strong></p>
+
+    <p><strong>Booked On:</strong> {{ booking.booking_datetime.strftime("%d %B %Y") }}</p>
+    
+    <hr>
+    <p class="text-danger"><strong> 
+        * Students are required to have their student ID available for verification. <br> 
+        * This receipt serves as proof of booking and payment. Please keep it safe.
+    </strong>
+    </p>
+
+
+
+    <button onclick="window.print()" class="btn btn-primary mt-3 no-print">
+      Download / Print Receipt
+    </button>
+    
+  </div>
+
+</div>
+{% endblock %}

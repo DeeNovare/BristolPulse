@@ -1,0 +1,65 @@
+{% extends "template.html" %}
+  {% block title %}Contact Us — BristolPulse{% endblock %}
+  {% block content %}
+
+
+
+  <!-- Main content -->
+
+  <header class="hero d-flex align-items-center text-center">
+    <div class="container">
+      <h1 class="display-3 fw-bold pb-2">Got any queries? We are here to help!</h1>
+      <p class="lead pb-3">Reach out to us via phone, email, or the contact form below.</p>
+    </div>
+  </header>
+
+  <h2 class="text-center pt-5 fw-bold">We'd love to hear from you</h2>
+
+
+  <section class="container py-5">
+  <!-- Contact info boxes -->
+  <div class="row text-center mb-5">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <div class="p-4 contact-card  rounded-3 h-100">
+        <i class="fa-solid fa-phone-volume fa-2x mb-3 text-primary"></i>
+        <h5>Phone Number</h5>
+        <p class="mb-0">+44 1234 567890</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-4 contact-card rounded-3 h-100">
+        <i class="fa-solid fa-envelope-circle-check fa-2x mb-3 text-primary"></i>
+        <h5>Mail Us</h5>
+        <p class="mb-0">info@bristolpulse.co.uk</p>
+      </div>
+    </div>
+  </div>
+
+  <!--Contact Us form-->
+ <form>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="First Name" required>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Last Name" required>
+      </div>
+      <div class="col-md-6">
+        <input type="email" class="form-control" placeholder="Email" required>
+      </div>
+      <div class="col-md-6">
+        <input type="tel" class="form-control" placeholder="Mobile Number">
+      </div>
+      <div class="col-12">
+        <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary px-5">Send Message</button>
+      </div>
+    </div>
+  </form>
+  </section>
+  {% endblock %}
+
+
+    

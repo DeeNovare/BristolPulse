@@ -1,0 +1,96 @@
+{% extends 'template.html' %}
+{% block title %}About — BristolPulse{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<header class="hero d-flex align-items-center text-center mb-5">
+  <div class="container">
+    <h1 class="fw-bold display-3">About BristolPulse</h1>
+    <p class="lead">Your central hub for discovering and booking events across Bristol.</p>
+  </div>
+</header>
+
+<div class="container pb-5">
+
+  <!-- About + Purpose -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-6">
+      <div class="p-4 rounded-4 shadow-sm bg-white h-100">
+        <h4 class="fw-semibold mb-3">What is BristolPulse?</h4>
+        <p class="text-muted mb-0">
+          BristolPulse is a web-based event management system designed to provide a unified platform
+          for exploring events happening across the city of Bristol. Users can browse, filter, and book
+          tickets for a variety of events including exhibitions, workshops, sports events, and more.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-4 rounded-4 shadow-sm bg-white h-100">
+        <h4 class="fw-semibold mb-3">Our Purpose</h4>
+        <p class="text-muted mb-0">
+          The platform aims to enhance tourism and community engagement by making event discovery simple,
+          accessible, and efficient. It also provides organisers with tools to manage events and track bookings.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Collaboration -->
+  <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 bg-light border-start border-4 border-primary">
+    <h4 class="fw-semibold mb-3">In Collaboration with BCE</h4>
+    <p class="mb-0">
+      This system is developed in collaboration with <strong>Bristol Community Events (BCE)</strong>,
+      an organisation focused on promoting cultural, social, and recreational activities within Bristol.
+      The platform supports BCE's goal of increasing event visibility and improving user experience
+      for both attendees and organisers.
+    </p>
+  </div>
+
+  <!-- Features -->
+  <div class="mb-5">
+    <h4 class="fw-semibold mb-4">Key Features</h4>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 shadow-sm h-100 bg-white feature-card">
+          <h6 class="fw-bold mb-2">Event Discovery</h6>
+          <p class="text-muted small mb-0">
+            Browse upcoming and past events with filtering by category, date, and price.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 shadow-sm h-100 bg-white feature-card">
+          <h6 class="fw-bold mb-2">Booking System</h6>
+          <p class="text-muted small mb-0">
+            Securely book tickets, view bookings, and manage cancellations with pricing logic.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 shadow-sm h-100 bg-white feature-card">
+          <h6 class="fw-bold mb-2">Admin Controls</h6>
+          <p class="text-muted small mb-0">
+            Admins can manage events, monitor bookings, and generate reports.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="p-4 rounded-4 bg-dark text-white shadow-sm">
+    <h4 class="fw-semibold mb-3">Disclaimer</h4>
+    <p class="mb-0 small">
+      This website is a prototype developed for academic purposes. Payment functionality is simulated,
+      and users may be required to present valid identification (e.g., student ID) at events where applicable.
+    </p>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "template.html" %}
+  {% block title %}Admin Dashboard — BristolPulse{% endblock %}
+  {% block content %}
+
+
+
+    <!-- Main content -->
+    <div class="container ">
+        <h1 class="fw-bold mb-4 mt-5 pt-5">Admin Dashboard</h1>
+
+        <a href="{{ url_for('add_event') }}" class="btn btn-primary mb-4"> + Add New Event</a>
+
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                <th>Event</th>
+                <th>Venue</th>
+                <th>Status</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for event in events %}
+                <tr>
+                <td>{{ event.event_name }}</td>
+                <td>{{ event.venue_name }}</td>
+                <td>
+                    {% if event.is_active %}
+                    <span class="badge bg-success">Active</span>
+                    {% else %}
+                    <span class="badge bg-secondary">Inactive</span>
+                    {% endif %}
+                </td>
+
+                <td>
+                  <a href="{{ url_for('event_details', event_id=event.event_id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                  <a href="{{ url_for('edit_event', event_id=event.event_id) }}"  class="btn btn-sm btn-outline-warning">Edit</a>
+
+                  <form action="{{ url_for('toggle_event', event_id=event.event_id) }}" method="POST" style="display: inline;">
+                    {% if event.is_active %}
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Deactivate</button>
+                  {% else %}
+                    <button type="submit" class="btn btn-sm btn-outline-success">Activate</button>
+                  {% endif %}
+                  </form>
+                  
+                </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <h3 class="mt-5">Bookings per Event</h3>
+        <table class="table">
+          <tr>
+            <th>Event</th>
+            <th>Total Bookings</th>
+          </tr>
+          {% for r in bookings_report %}
+          <tr>
+            <td>{{ r.event_name }}</td>
+            <td>{{ r.total_bookings }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+
+        <h3 class="mt-5">Revenue per Event</h3>
+        <table class="table">
+          <tr>
+            <th>Event</th>
+            <th>Revenue (£)</th>
+          </tr>
+          {% for r in revenue_report %}
+          <tr>
+            <td>{{ r.event_name }}</td>
+            <td>{{ r.revenue or 0 }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+    {% endblock %}
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+     

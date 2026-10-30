@@ -1,0 +1,80 @@
+{% extends "template.html" %}
+  {% block title %}My Bookings | BristolPulse{% endblock %}
+
+  {% block content %}
+  <!-- Main content -->
+    <div class="container py-5 mt-5" style="max-width: 1000px;">
+        <h1 class="fw-bold mb-4">My Bookings</h1>
+
+        {% if bookings %}
+            <div class="row g-4">
+            {% for booking in bookings %}
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0 p-4">
+
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="mb-0">{{ booking.event_name }}</h5>
+                    <small class="text-muted">
+                    Booked {{ booking.booking_datetime.strftime("%d %B %Y") }}
+                    </small>
+                </div>
+
+                <p class="text-muted mb-3">
+                    {{ booking.venue_name }}
+                </p>
+
+                <p class="mb-2">
+                    <i class="fa-regular fa-calendar me-2"></i>
+                    {{ booking.day_date.strftime("%d %B %Y") }}
+                </p>
+
+                <p class="mb-2">
+                    <i class="fa-solid fa-clock me-2"></i>
+                    {{ booking.start_datetime.strftime("%H:%M") }} - {{ booking.end_datetime.strftime("%H:%M") }}
+                </p>
+
+                <p class="mb-2">
+                    <i class="fa-solid fa-ticket me-2"></i>
+                    {{ booking.num_tickets }} ticket(s)
+                </p>
+
+                <p class="mb-2">
+                    <i class="fa-solid fa-pound-sign me-2"></i>
+                    £{{ "%.2f"|format(booking.day_price) }} each
+                </p>
+
+                <span class="badge bg-success align-self-start px-3 py-2">
+                    {{ booking.status|capitalize }}
+                </span>
+                <a href="{{ url_for('receipt', booking_id=booking.booking_id) }}" class="btn btn-sm btn-outline-primary mt-2">View Receipt</a>
+                <form action="{{ url_for('cancel_booking', booking_id=booking.booking_id) }}" method="POST" style="display: inline;">
+                    {% if booking.status == 'confirmed' %}
+                    <button class="btn btn-sm btn-outline-danger mt-2">Cancel</button>
+                    {% else %}
+                    <span class="text-muted ">
+                        Cancelled <br>
+                        Refund: £{{ booking.refund_amount or '0.00'}}
+                    </span>
+                    {% endif %}
+                </form>
+                </div>
+                
+            </div>
+            {% endfor %}
+            
+        </div>
+        {% else %}
+        <p class="text-muted">You have no bookings yet. Explore events and reserve your spot.</p>
+        {% endif %}
+    </div>
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+

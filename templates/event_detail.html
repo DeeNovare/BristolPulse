@@ -1,0 +1,95 @@
+{% extends "template.html" %}
+  {% block title %}{{ event.event_name }} — BristolPulse{% endblock %}
+  {% block content %}
+
+
+    <!----- Main content ------>
+    <div class="container py-5 mt-5" style="max-width: 1000px;">
+      <a href="{{ url_for('events') }}" class="btn btn-outline-secondary mb-4">  ← Back to Events</a>
+
+      <!--<div class="bg-white rounded-4 shadow-sm border-0 p-4">-->
+          <h1 class="fw-bold mb-3">{{ event.event_name }}</h1>
+          <p class="lead text-muted">{{ event.event_description }}</p>
+          <p>
+              <i class="fa-solid fa-location-dot me-2"></i>
+              <strong>{{ event.venue_name }}</strong> — {{ event.address }}
+          </p>
+
+          <p>
+              <i class="fa-solid fa-tag me-2"></i>
+              {{ event.category_name }}
+          </p>
+
+          <p>
+              <i class="fa-solid fa-pound-sign me-2"></i>
+              From £{{ "%.2f"|format(event.price) }}
+          </p>
+
+          <hr>
+
+          <h4 class="mb-3">Dates & Times</h4>
+
+          {% for day in event_days %}
+          <div class="border rounded p-3 mb-3">
+              <p class="mb-1">
+                  <i class="fa-regular fa-calendar me-2"></i>
+                  {{ day.day_date.strftime("%d %B %Y") }}
+              </p>
+              <p class="mb-1">
+                  <i class="fa-solid fa-clock me-2"></i>
+                  {{ day.start_datetime.strftime("%H:%M") }} - {{ day.end_datetime.strftime("%H:%M") }}
+              </p>
+              <p class="mb-0">
+                  <i class="fa-solid fa-ticket me-2"></i>
+                  £{{ "%.2f"|format(day.day_price) }}
+              </p>
+          </div>
+          {% endfor %}
+
+          <hr>
+
+          <h4 class="mb-3">Book Tickets</h4>
+
+          <form method="POST" action="{{ url_for('book_event', event_id=event.event_id) }}">
+            <div class="mb-3">
+                <label class="form-label">Select Date</label>
+                <select name="event_day_id" class="form-select" required>
+                    {% for day in event_days %}
+                    <option value="{{ day.event_day_id }}">
+                        {{ day.day_date.strftime("%d %B %Y") }}
+                        ({{ day.start_datetime.strftime("%H:%M") }} - {{ day.end_datetime.strftime("%H:%M") }}) — £{{ "%.2f"|format(day.day_price) }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Tickets</label>
+                <input type="number" name="num_tickets" class="form-control" min="1" value="1" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Reserve Tickets</button>
+        </form>
+      <!--</div>-->
+    </div>
+    {% endblock %}
+    
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+    
